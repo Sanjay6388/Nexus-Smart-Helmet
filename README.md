@@ -1,16 +1,16 @@
 # 🚨 Nexus Smart Helmet Monitoring System
 
-A full-stack **Real-Time Helmet Monitoring System** designed for **smart coal mining** safety using **IoT (ESP32 + Blynk)**, **React.js**, **MongoDB**, and **Tailwind CSS**. It monitors **gas levels, temperature, humidity, fall detection**, and calculates **helmet-to-helmet distance**, with support for **live dashboard, data export**, and alerts.
+A full-stack **Real-Time Helmet Monitoring System** designed for **smart coal mining** safety using **IoT (ESP32 + Blynk)**, **React.js**, **MongoDB**, and **Tailwind CSS**. It monitors **gas levels, temperature, heart rate (RPM), fall detection**, and calculates **helmet-to-helmet distance**, with support for **live dashboard, data export**, and alerts.
 
 ---
 
 ## 📌 Features
 
 - 🔴 Real-time monitoring of multiple helmets
-- 🌡️ Sensor data: Temperature, Humidity, Gas levels (MQ series), Fall Detection (MPU6050)
+- 🌡️ Sensor data: Temperature (from MPU6050), Gas levels (MQ series), Fall Detection (MPU6050), Heart Rate in RPM (HW-827)
 - 📍 Distance calculation between helmets using coordinates (x, y, z)
 - 🧭 Interactive dashboard with zoom, drag, and distance visualization
-- 📊 Live gas level and distance tables
+- 📊 Live gas level, heart rate, and distance tables
 - 📥 Export data to Excel (`.xlsx`)
 - 🧠 Data stored in MongoDB for history
 - 🛰️ Blynk IoT integration for wireless data
@@ -34,7 +34,7 @@ A full-stack **Real-Time Helmet Monitoring System** designed for **smart coal mi
 ### 📟 IoT
 - **ESP32**
 - **Blynk Platform**
-- **Sensors:** MQ gas sensor, DHT11/DHT22, MPU6050
+- **Sensors:** MQ gas sensor, MPU6050 (temperature + fall detection), HW-827 Heart Rate Sensor (RPM)
 
 ---
 
@@ -68,7 +68,7 @@ nexus-dashboard/
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/nexus-dashboard.git
+git clone https://github.com/Sanjay6388/Nexus-Smart-Helmet.git
 cd nexus-dashboard
 ```
 
@@ -134,8 +134,8 @@ Initialize Tailwind in `tailwind.config.js` and import in `index.css`.
 ### Hardware
 - ESP32 board
 - MQ Gas Sensor
-- DHT11/DHT22 (Temperature + Humidity)
-- MPU6050 (Gyroscope for fall detection)
+- MPU6050 (Temperature + Gyroscope for fall detection)
+- HW-827 Heart Rate Sensor (RPM)
 
 ### Platform
 - [Blynk Cloud](https://blynk.cloud/): Configure virtual pins (V1, V2, V3, etc.)
@@ -156,14 +156,15 @@ GET /api/helmet/data?token=<BLYNK_TOKEN>
 Returns:
 ```json
 {
-  "temp": 32.5,
-  "humidity": 78,
-  "gas": 112,
+  "temp": 31.8,
+  "gas": 98,
   "fall": false,
-  "x": 10,
-  "y": 15,
-  "z": 0
+  "heartrate_rpm": 78,
+  "x": 12,
+  "y": 14,
+  "z": 2
 }
+
 ```
 
 ---
@@ -191,7 +192,7 @@ Click **"Export to Excel"** in the dashboard — uses the `xlsx` package to gene
 For questions, suggestions, or collaboration:
 
 **Sanjay Sahani**  
-[LinkedIn](https://www.linkedin.com/in/sanjay-sahani) | [GitHub](https://github.com/sanjayxdev)
+[LinkedIn](https://www.linkedin.com/in/sanjay-sahani-96b81b204/) | [GitHub](https://github.com/Sanjay6388)
 
 ---
 
